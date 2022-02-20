@@ -35,10 +35,6 @@ data_directory = args.data_dir
 class_weights = args.cls_wts
 class_merge = args.cls_mg
 
-if args.image_dir is None:
-    args.image_dir = args.xml_dir
-
-
 try:
     #os.mkdir(directory+'/labels/')
     os.mkdir(directory)
