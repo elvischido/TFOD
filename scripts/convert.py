@@ -2,10 +2,42 @@ import json
 from PIL import Image
 import os
 import shutil
+import argparse
 
-#directory = '/content/Tensorflow/workspace/images/malaria'
-directory = '/content/Tensorflow/workspace/images'
-data_directory = '/content/Tensorflow/workspace/data/malaria/'
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'    # Suppress TensorFlow logging (1)
+
+
+# Initiate argument parser
+parser = argparse.ArgumentParser(
+    description="Script to convert Malaria Dataset annotation to pascal voc")
+parser.add_argument("-id",
+                    "--img_dir",
+                    help="Path to the folder where the the img files and annotations are stored.",
+                    type=str)
+parser.add_argument("-dd",
+                    "--data_dir",
+                    help="Path to the folder where the the compressed files are stored.", type=str)
+parser.add_argument("-cw",
+                    "--cls_wts",
+                    help="a string containing the class weights.", type=str)
+parser.add_argument("-i",
+                    "--image_dir",
+                    help="Path to the folder where the input image files are stored.", type=str, default=None)
+parser.add_argument("-cm",
+                    "--cls_mg",
+                    help="a .csv file containing classes to be merged",
+                    type=str, default=None)
+
+args = parser.parse_args()
+
+directory = args.img_dir
+data_directory = args.data_dir
+class_weights = args.cls_wts
+class_merge = args.cls_mg
+
+if args.image_dir is None:
+    args.image_dir = args.xml_dir
+
 
 try:
     #os.mkdir(directory+'/labels/')
@@ -19,18 +51,11 @@ except OSError as error:
     print(error)
 
 try:
-    #os.mkdir(directory + '/labels/test/')
     os.mkdir(directory + '/test/')
 except OSError as error:
     print(error)
 
 def wt_frm_name(name):
-  # Define the class names and their weight
-  #class_names = [' ','red blood cell', 'trophozoite', 'difficult', 'ring', 'schizont', 'gametocyte', 'leukocyte']
-  #class_weights = [0, 1.0, 52.559402579769184, 175.55555555555557, 219.3201133144476, 432.513966480447, 537.6388888888889, 751.6504854368932]
-  class_weights = {'red blood cell': 1.0, 'trophozoite': 52.559402579769184, 'difficult': 175.55555555555557, 'ring': 219.3201133144476, 'schizont': 432.513966480447, 'gametocyte': 537.6388888888889, 'leukocyte': 751.6504854368932}
-  #class_weights = [{1: 1.0}, {2: 52.559402579769184}, {3: 175.55555555555557}, {4: 219.3201133144476}, {5: 432.513966480447}, {6: 537.6388888888889}, {7: 751.6504854368932}]
-
   wt = class_weights[name]
   #print(class_weights[name])
   return wt
