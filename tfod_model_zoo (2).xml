@@ -1,0 +1,261 @@
+
+<data>
+	<model name="CenterNet_HourGlass104_512x512">
+		<Speed_ms>70</Speed_ms>
+		<COCO_mAP>41.9</COCO_mAP>
+		<Outputs>Boxes</Outputs>
+		<Model_url>http://download.tensorflow.org/models/object_detection/tf2/20200713/centernet_hg104_512x512_coco17_tpu-8.tar.gz</Model_url>
+	</model>
+	<model name="CenterNet_HourGlass104_Keypoints_512x512">
+		<Speed_ms>76</Speed_ms>
+		<COCO_mAP>40.0/61.4</COCO_mAP>
+		<Outputs>Boxes/Keypoints</Outputs>
+		<Model_url>http://download.tensorflow.org/models/object_detection/tf2/20200711/centernet_hg104_512x512_kpts_coco17_tpu-32.tar.gz</Model_url>
+	</model>
+	<model name="CenterNet_HourGlass104_1024x1024">
+		<Speed_ms>197</Speed_ms>
+		<COCO_mAP>44.5</COCO_mAP>
+		<Outputs>Boxes</Outputs>
+		<Model_url>http://download.tensorflow.org/models/object_detection/tf2/20200713/centernet_hg104_1024x1024_coco17_tpu-32.tar.gz</Model_url>
+	</model>
+	<model name="CenterNet_HourGlass104_Keypoints_1024x1024">
+		<Speed_ms>211</Speed_ms>
+		<COCO_mAP>42.8/64.5</COCO_mAP>
+		<Outputs>Boxes/Keypoints</Outputs>
+		<Model_url>http://download.tensorflow.org/models/object_detection/tf2/20200711/centernet_hg104_1024x1024_kpts_coco17_tpu-32.tar.gz</Model_url>
+	</model>
+	<model name="CenterNet_Resnet50_V1_FPN_512x512">
+		<Speed_ms>27</Speed_ms>
+		<COCO_mAP>31.2</COCO_mAP>
+		<Outputs>Boxes</Outputs>
+		<Model_url>http://download.tensorflow.org/models/object_detection/tf2/20200711/centernet_resnet50_v1_fpn_512x512_coco17_tpu-8.tar.gz</Model_url>
+	</model>
+	<model name="CenterNet_Resnet50_V1_FPN_Keypoints_512x512">
+		<Speed_ms>30</Speed_ms>
+		<COCO_mAP>29.3/50.7</COCO_mAP>
+		<Outputs>Boxes/Keypoints</Outputs>
+		<Model_url>http://download.tensorflow.org/models/object_detection/tf2/20200711/centernet_resnet50_v1_fpn_512x512_kpts_coco17_tpu-8.tar.gz</Model_url>
+	</model>
+	<model name="CenterNet_Resnet101_V1_FPN_512x512">
+		<Speed_ms>34</Speed_ms>
+		<COCO_mAP>34.2</COCO_mAP>
+		<Outputs>Boxes</Outputs>
+		<Model_url>http://download.tensorflow.org/models/object_detection/tf2/20200711/centernet_resnet101_v1_fpn_512x512_coco17_tpu-8.tar.gz</Model_url>
+	</model>
+	<model name="CenterNet_Resnet50_V2_512x512">
+		<Speed_ms>27</Speed_ms>
+		<COCO_mAP>29.5</COCO_mAP>
+		<Outputs>Boxes</Outputs>
+		<Model_url>http://download.tensorflow.org/models/object_detection/tf2/20200711/centernet_resnet50_v2_512x512_coco17_tpu-8.tar.gz</Model_url>
+	</model>
+	<model name="CenterNet_Resnet50_V2_Keypoints_512x512">
+		<Speed_ms>30</Speed_ms>
+		<COCO_mAP>27.6/48.2</COCO_mAP>
+		<Outputs>Boxes/Keypoints</Outputs>
+		<Model_url>http://download.tensorflow.org/models/object_detection/tf2/20200711/centernet_resnet50_v2_512x512_kpts_coco17_tpu-8.tar.gz</Model_url>
+	</model>
+	<model name="CenterNet_MobileNetV2_FPN_512x512">
+		<Speed_ms>6</Speed_ms>
+		<COCO_mAP>23.4</COCO_mAP>
+		<Outputs>Boxes</Outputs>
+		<Model_url>http://download.tensorflow.org/models/object_detection/tf2/20210210/centernet_mobilenetv2fpn_512x512_coco17_od.tar.gz</Model_url>
+	</model>
+	<model name="CenterNet_MobileNetV2_FPN_Keypoints_512x512">
+		<Speed_ms>6</Speed_ms>
+		<COCO_mAP>41.7</COCO_mAP>
+		<Outputs>Keypoints</Outputs>
+		<Model_url>http://download.tensorflow.org/models/object_detection/tf2/20210210/centernet_mobilenetv2fpn_512x512_coco17_kpts.tar.gz</Model_url>
+	</model>
+	<model name="EfficientDet_D0_512x512">
+		<Speed_ms>39</Speed_ms>
+		<COCO_mAP>33.6</COCO_mAP>
+		<Outputs>Boxes</Outputs>
+		<Model_url>http://download.tensorflow.org/models/object_detection/tf2/20200711/efficientdet_d0_coco17_tpu-32.tar.gz</Model_url>
+	</model>
+	<model name="EfficientDet_D1_640x640">
+		<Speed_ms>54</Speed_ms>
+		<COCO_mAP>38.4</COCO_mAP>
+		<Outputs>Boxes</Outputs>
+		<Model_url>http://download.tensorflow.org/models/object_detection/tf2/20200711/efficientdet_d1_coco17_tpu-32.tar.gz</Model_url>
+	</model>
+	<model name="EfficientDet_D2_768x768">
+		<Speed_ms>67</Speed_ms>
+		<COCO_mAP>41.8</COCO_mAP>
+		<Outputs>Boxes</Outputs>
+		<Model_url>http://download.tensorflow.org/models/object_detection/tf2/20200711/efficientdet_d2_coco17_tpu-32.tar.gz</Model_url>
+	</model>
+	<model name="EfficientDet_D3_896x896">
+		<Speed_ms>95</Speed_ms>
+		<COCO_mAP>45.4</COCO_mAP>
+		<Outputs>Boxes</Outputs>
+		<Model_url>http://download.tensorflow.org/models/object_detection/tf2/20200711/efficientdet_d3_coco17_tpu-32.tar.gz</Model_url>
+	</model>
+	<model name="EfficientDet_D4_1024x1024">
+		<Speed_ms>133</Speed_ms>
+		<COCO_mAP>48.5</COCO_mAP>
+		<Outputs>Boxes</Outputs>
+		<Model_url>http://download.tensorflow.org/models/object_detection/tf2/20200711/efficientdet_d4_coco17_tpu-32.tar.gz</Model_url>
+	</model>
+	<model name="EfficientDet_D5_1280x1280">
+		<Speed_ms>222</Speed_ms>
+		<COCO_mAP>49.7</COCO_mAP>
+		<Outputs>Boxes</Outputs>
+		<Model_url>http://download.tensorflow.org/models/object_detection/tf2/20200711/efficientdet_d5_coco17_tpu-32.tar.gz</Model_url>
+	</model>
+	<model name="EfficientDet_D6_1280x1280">
+		<Speed_ms>268</Speed_ms>
+		<COCO_mAP>50.5</COCO_mAP>
+		<Outputs>Boxes</Outputs>
+		<Model_url>http://download.tensorflow.org/models/object_detection/tf2/20200711/efficientdet_d6_coco17_tpu-32.tar.gz</Model_url>
+	</model>
+	<model name="EfficientDet_D7_1536x1536">
+		<Speed_ms>325</Speed_ms>
+		<COCO_mAP>51.2</COCO_mAP>
+		<Outputs>Boxes</Outputs>
+		<Model_url>http://download.tensorflow.org/models/object_detection/tf2/20200711/efficientdet_d7_coco17_tpu-32.tar.gz</Model_url>
+	</model>
+	<model name="SSD_MobileNet_v2_320x320">
+		<Speed_ms>19</Speed_ms>
+		<COCO_mAP>20.2</COCO_mAP>
+		<Outputs>Boxes</Outputs>
+		<Model_url>http://download.tensorflow.org/models/object_detection/tf2/20200711/ssd_mobilenet_v2_320x320_coco17_tpu-8.tar.gz</Model_url>
+	</model>
+	<model name="SSD_MobileNet_V1_FPN_640x640">
+		<Speed_ms>48</Speed_ms>
+		<COCO_mAP>29.1</COCO_mAP>
+		<Outputs>Boxes</Outputs>
+		<Model_url>http://download.tensorflow.org/models/object_detection/tf2/20200711/ssd_mobilenet_v1_fpn_640x640_coco17_tpu-8.tar.gz</Model_url>
+	</model>
+	<model name="SSD_MobileNet_V2_FPNLite_320x320">
+		<Speed_ms>22</Speed_ms>
+		<COCO_mAP>22.2</COCO_mAP>
+		<Outputs>Boxes</Outputs>
+		<Model_url>http://download.tensorflow.org/models/object_detection/tf2/20200711/ssd_mobilenet_v2_fpnlite_320x320_coco17_tpu-8.tar.gz</Model_url>
+	</model>
+	<model name="SSD_MobileNet_V2_FPNLite_640x640">
+		<Speed_ms>39</Speed_ms>
+		<COCO_mAP>28.2</COCO_mAP>
+		<Outputs>Boxes</Outputs>
+		<Model_url>http://download.tensorflow.org/models/object_detection/tf2/20200711/ssd_mobilenet_v2_fpnlite_640x640_coco17_tpu-8.tar.gz</Model_url>
+	</model>
+	<model name="SSD_ResNet50_V1_FPN_640x640_(RetinaNet50)">
+		<Speed_ms>46</Speed_ms>
+		<COCO_mAP>34.3</COCO_mAP>
+		<Outputs>Boxes</Outputs>
+		<Model_url>http://download.tensorflow.org/models/object_detection/tf2/20200711/ssd_resnet50_v1_fpn_640x640_coco17_tpu-8.tar.gz</Model_url>
+	</model>
+	<model name="SSD_ResNet50_V1_FPN_1024x1024_(RetinaNet50)">
+		<Speed_ms>87</Speed_ms>
+		<COCO_mAP>38.3</COCO_mAP>
+		<Outputs>Boxes</Outputs>
+		<Model_url>http://download.tensorflow.org/models/object_detection/tf2/20200711/ssd_resnet50_v1_fpn_1024x1024_coco17_tpu-8.tar.gz</Model_url>
+	</model>
+	<model name="SSD_ResNet101_V1_FPN_640x640_(RetinaNet101)">
+		<Speed_ms>57</Speed_ms>
+		<COCO_mAP>35.6</COCO_mAP>
+		<Outputs>Boxes</Outputs>
+		<Model_url>http://download.tensorflow.org/models/object_detection/tf2/20200711/ssd_resnet101_v1_fpn_640x640_coco17_tpu-8.tar.gz</Model_url>
+	</model>
+	<model name="SSD_ResNet101_V1_FPN_1024x1024_(RetinaNet101)">
+		<Speed_ms>104</Speed_ms>
+		<COCO_mAP>39.5</COCO_mAP>
+		<Outputs>Boxes</Outputs>
+		<Model_url>http://download.tensorflow.org/models/object_detection/tf2/20200711/ssd_resnet101_v1_fpn_1024x1024_coco17_tpu-8.tar.gz</Model_url>
+	</model>
+	<model name="SSD_ResNet152_V1_FPN_640x640_(RetinaNet152)">
+		<Speed_ms>80</Speed_ms>
+		<COCO_mAP>35.4</COCO_mAP>
+		<Outputs>Boxes</Outputs>
+		<Model_url>http://download.tensorflow.org/models/object_detection/tf2/20200711/ssd_resnet152_v1_fpn_640x640_coco17_tpu-8.tar.gz</Model_url>
+	</model>
+	<model name="SSD_ResNet152_V1_FPN_1024x1024_(RetinaNet152)">
+		<Speed_ms>111</Speed_ms>
+		<COCO_mAP>39.6</COCO_mAP>
+		<Outputs>Boxes</Outputs>
+		<Model_url>http://download.tensorflow.org/models/object_detection/tf2/20200711/ssd_resnet152_v1_fpn_1024x1024_coco17_tpu-8.tar.gz</Model_url>
+	</model>
+	<model name="Faster_R-CNN_ResNet50_V1_640x640">
+		<Speed_ms>53</Speed_ms>
+		<COCO_mAP>29.3</COCO_mAP>
+		<Outputs>Boxes</Outputs>
+		<Model_url>http://download.tensorflow.org/models/object_detection/tf2/20200711/faster_rcnn_resnet50_v1_640x640_coco17_tpu-8.tar.gz</Model_url>
+	</model>
+	<model name="Faster_R-CNN_ResNet50_V1_1024x1024">
+		<Speed_ms>65</Speed_ms>
+		<COCO_mAP>31</COCO_mAP>
+		<Outputs>Boxes</Outputs>
+		<Model_url>http://download.tensorflow.org/models/object_detection/tf2/20200711/faster_rcnn_resnet50_v1_1024x1024_coco17_tpu-8.tar.gz</Model_url>
+	</model>
+	<model name="Faster_R-CNN_ResNet50_V1_800x1333">
+		<Speed_ms>65</Speed_ms>
+		<COCO_mAP>31.6</COCO_mAP>
+		<Outputs>Boxes</Outputs>
+		<Model_url>http://download.tensorflow.org/models/object_detection/tf2/20200711/faster_rcnn_resnet50_v1_800x1333_coco17_gpu-8.tar.gz</Model_url>
+	</model>
+	<model name="Faster_R-CNN_ResNet101_V1_640x640">
+		<Speed_ms>55</Speed_ms>
+		<COCO_mAP>31.8</COCO_mAP>
+		<Outputs>Boxes</Outputs>
+		<Model_url>http://download.tensorflow.org/models/object_detection/tf2/20200711/faster_rcnn_resnet101_v1_640x640_coco17_tpu-8.tar.gz</Model_url>
+	</model>
+	<model name="Faster_R-CNN_ResNet101_V1_1024x1024">
+		<Speed_ms>72</Speed_ms>
+		<COCO_mAP>37.1</COCO_mAP>
+		<Outputs>Boxes</Outputs>
+		<Model_url>http://download.tensorflow.org/models/object_detection/tf2/20200711/faster_rcnn_resnet101_v1_1024x1024_coco17_tpu-8.tar.gz</Model_url>
+	</model>
+	<model name="Faster_R-CNN_ResNet101_V1_800x1333">
+		<Speed_ms>77</Speed_ms>
+		<COCO_mAP>36.6</COCO_mAP>
+		<Outputs>Boxes</Outputs>
+		<Model_url>http://download.tensorflow.org/models/object_detection/tf2/20200711/faster_rcnn_resnet101_v1_800x1333_coco17_gpu-8.tar.gz</Model_url>
+	</model>
+	<model name="Faster_R-CNN_ResNet152_V1_640x640">
+		<Speed_ms>64</Speed_ms>
+		<COCO_mAP>32.4</COCO_mAP>
+		<Outputs>Boxes</Outputs>
+		<Model_url>http://download.tensorflow.org/models/object_detection/tf2/20200711/faster_rcnn_resnet152_v1_640x640_coco17_tpu-8.tar.gz</Model_url>
+	</model>
+	<model name="Faster_R-CNN_ResNet152_V1_1024x1024">
+		<Speed_ms>85</Speed_ms>
+		<COCO_mAP>37.6</COCO_mAP>
+		<Outputs>Boxes</Outputs>
+		<Model_url>http://download.tensorflow.org/models/object_detection/tf2/20200711/faster_rcnn_resnet152_v1_1024x1024_coco17_tpu-8.tar.gz</Model_url>
+	</model>
+	<model name="Faster_R-CNN_ResNet152_V1_800x1333">
+		<Speed_ms>101</Speed_ms>
+		<COCO_mAP>37.4</COCO_mAP>
+		<Outputs>Boxes</Outputs>
+		<Model_url>http://download.tensorflow.org/models/object_detection/tf2/20200711/faster_rcnn_resnet152_v1_800x1333_coco17_gpu-8.tar.gz</Model_url>
+	</model>
+	<model name="Faster_R-CNN_Inception_ResNet_V2_640x640">
+		<Speed_ms>206</Speed_ms>
+		<COCO_mAP>37.7</COCO_mAP>
+		<Outputs>Boxes</Outputs>
+		<Model_url>http://download.tensorflow.org/models/object_detection/tf2/20200711/faster_rcnn_inception_resnet_v2_640x640_coco17_tpu-8.tar.gz</Model_url>
+	</model>
+	<model name="Faster_R-CNN_Inception_ResNet_V2_1024x1024">
+		<Speed_ms>236</Speed_ms>
+		<COCO_mAP>38.7</COCO_mAP>
+		<Outputs>Boxes</Outputs>
+		<Model_url>http://download.tensorflow.org/models/object_detection/tf2/20200711/faster_rcnn_inception_resnet_v2_1024x1024_coco17_tpu-8.tar.gz</Model_url>
+	</model>
+	<model name="Mask_R-CNN_Inception_ResNet_V2_1024x1024">
+		<Speed_ms>301</Speed_ms>
+		<COCO_mAP>39.0/34.6</COCO_mAP>
+		<Outputs>Boxes/Masks</Outputs>
+		<Model_url>http://download.tensorflow.org/models/object_detection/tf2/20200711/mask_rcnn_inception_resnet_v2_1024x1024_coco17_gpu-8.tar.gz</Model_url>
+	</model>
+	<model name="ExtremeNet_(deprecated)">
+		<Speed_ms>--</Speed_ms>
+		<COCO_mAP>--</COCO_mAP>
+		<Outputs>Boxes</Outputs>
+		<Model_url>http://download.tensorflow.org/models/object_detection/tf2/20200711/extremenet.tar.gz</Model_url>
+	</model>
+	<model name="ExtremeNet">
+		<Speed_ms>--</Speed_ms>
+		<COCO_mAP>--</COCO_mAP>
+		<Outputs>Boxes</Outputs>
+		<Model_url>http://download.tensorflow.org/models/object_detection/tf2/20210507/extremenet.tar.gz</Model_url>
+	</model>
+</data>
