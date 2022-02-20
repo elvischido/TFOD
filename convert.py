@@ -65,16 +65,18 @@ for mode in ['training', 'test']:
     inf_ct = 0
     uninf_ct = 0
     rmv = 0
+    no_of_files = 0
     with open (data_directory + "/{}.json".format(mode), "r") as myfile:
         data = json.loads(myfile.read())
-
         for sample in data:
             image_src = data_directory + sample['image']['pathname']
             #img_dir = directory + '/labels/{}'.format(mode)
             img_dir = directory + '/' + '{}'.format(mode)
             image = Image.open(image_src)
             width, height = image.size
-
+            
+            no_of_files += 1 # count the number of images
+            
             #print(image_src)
             #print(img_dir + sample['image']['pathname'])
             
@@ -119,4 +121,4 @@ for mode in ['training', 'test']:
             with open(directory + "/{}/{}.xml".format(mode, sample['image']['pathname'].split('/')[-1].split('.')[0]), "w") as myfile:
                 myfile.write(output)
 
-    print ("{} dataset created and contains {} uninfected cells, {} infected cells. {} cells were removed.".format(mode, uninf_ct, inf_ct, rmv))
+    print ("{} dataset created with {} files containing {} uninfected cells, {} infected cells. {} cells were removed.".format(no_of_files, mode, uninf_ct, inf_ct, rmv))
