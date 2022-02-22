@@ -121,4 +121,4 @@ for mode in ['training', 'test']:
             with open(directory + "/{}/{}.xml".format(mode, sample['image']['pathname'].split('/')[-1].split('.')[0]), "w") as myfile:
                 myfile.write(output)
 
-    print ("{} dataset created with {} files containing {} uninfected cells, {} infected cells. {} cells were removed.".format(no_of_files, mode, uninf_ct, inf_ct, rmv))
+    print ("{} dataset created with {} files containing {} uninfected cells, {} infected cells. {} cells were removed.".format(mode, no_of_files, uninf_ct, inf_ct, rmv))
