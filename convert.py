@@ -94,7 +94,10 @@ for mode in ['training', 'test']:
             for sample in data:
                 image_src = data_directory + sample['image']['pathname']
                 #img_dir = directory + '/labels/{}'.format(mode)
-                img_dir = directory + '/' + '{}'.format(mode)
+                if mode == 'training':
+                    img_dir = directory + '/' + status + '/' + '{}'.format(mode)
+                else:
+                    img_dir = directory + '/' + '{}'.format(mode)
                 image = Image.open(image_src)
                 width, height = image.size
 
@@ -144,7 +147,7 @@ for mode in ['training', 'test']:
                 output += "\n</annotation>"
 
                 if mode == 'training':
-                    shutil.copyfile(image_src, img_dir + '/' + category + '/'+ sample['image']['pathname'].split('/')[-1])
+                    shutil.copyfile(image_src, img_dir + '/'+ sample['image']['pathname'].split('/')[-1])
                     with open(directory + "/{}/{}/{}.xml".format(mode, category, sample['image']['pathname'].split('/')[-1].split('.')[0]), "w") as myfile:
                         myfile.write(output)
                 else:
