@@ -53,18 +53,19 @@ class_maps = json.loads(args.cls_mp)
 try:
     #os.mkdir(directory+'/labels/')
     os.mkdir(directory)
-    print(directory+'/labels/' + ' has been successfully created')
+    print(directory + ' folder has been successfully created')
 except OSError as error:
     print(error)
 
 try:
-    os.mkdir(directory +'/training/uninfected/')
-    print(directory +'/training/uninfected/' + ' has been successfully created')
+    path = os.path.join(directory, training, uninfected)
+    os.mkdir(path)
+    print(path + ' folder has been successfully created')
 except OSError as error:
     print(error)
 
 try:
-    os.mkdir(directory +'/training' + '/infected/')
+    os.mkdir(directory + '/training' + '/infected/')
     print(directory +'/training' + '/infected/' + ' has been successfully created')
 except OSError as error:
     print(error)
