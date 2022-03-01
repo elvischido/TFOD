@@ -106,7 +106,7 @@ for mode in ['training', 'test']:
                 filename = sample['image']['pathname'].split('/')[-1]
 
                 if mode == 'training':
-                    path = '..' + '/' + data_infection + '/' + sample['image']['pathname']
+                    path = '..' + '/' + status + '/' + sample['image']['pathname']
                 else:
                     path = '..' + sample['image']['pathname']
 
