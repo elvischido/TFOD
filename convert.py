@@ -130,7 +130,7 @@ for mode in ['training', 'test']:
                       uninf_ct += 1
                     if category == 'rmv':
                       rmv += 1
-                    if category != 'rmv' && category == status: # take out rbcs from annotation
+                    if category != 'rmv' and category == status: # take out rbcs from annotation
 
                       output += "\n\t<object>\n\t\t<name>{}</name>\n\t\t<pose>Unspecified</pose>".format(category)
 
