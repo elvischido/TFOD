@@ -64,8 +64,8 @@ except OSError as error:
     print(error)
 
 try:
-    os.mkdir(directory +'/training' '+' '/infected/')
-    print(directory +'/training' '+' '/infected/' + ' has been successfully created')
+    os.mkdir(directory +'/training' + '/infected/')
+    print(directory +'/training' + '/infected/' + ' has been successfully created')
 except OSError as error:
     print(error)
 
