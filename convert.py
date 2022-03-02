@@ -151,7 +151,7 @@ for mode in ['training', 'test']:
 
                 if mode == 'training':
                     shutil.copyfile(image_src, img_dir + '/'+ sample['image']['pathname'].split('/')[-1])
-                    with open(directory + "/{}/{}/{}.xml".format(mode, category, sample['image']['pathname'].split('/')[-1].split('.')[0]), "w") as myfile:
+                    with open(directory + "/{}/{}/{}.xml".format(mode, status, sample['image']['pathname'].split('/')[-1].split('.')[0]), "w") as myfile:
                         myfile.write(output)
                 else:
                     shutil.copyfile(image_src, img_dir + '/'+ sample['image']['pathname'].split('/')[-1])
