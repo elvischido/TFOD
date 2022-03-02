@@ -59,8 +59,7 @@ except OSError as error:
 
 try:
     path = os.path.join(directory, 'training', 'uninfected')
-    print(path)
-    os.mkdir (path)
+    os.makedirs(path)
     print(path + ' folder has been successfully created')
 except OSError as error:
     print(error)
