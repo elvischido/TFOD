@@ -92,86 +92,117 @@ for mode in ['training', 'test']:
     no_of_files = 0
     with open (data_directory + "/{}.json".format(mode), "r") as myfile:
         data = json.loads(myfile.read())
-        for status in ['uninfected', 'infected']:
-            for sample in data:
-                inf_ct_int = 0
-                uninf_ct_int = 0 # count for each image
-                image_src = data_directory + sample['image']['pathname']
-                #img_dir = directory + '/labels/{}'.format(mode)
-                if mode == 'training':
-                    img_dir = directory + '/{}/{}'.format(mode, status)
-                    #print(img_dir)
-                else:
-                    img_dir = directory + '/' + '{}'.format(mode)
-                image = Image.open(image_src)
-                width, height = image.size
+        if mode == 'training':
+          for status in ['infected', 'uninfected']:
+              for sample in data:
+                  inf_ct_int = 0
+                  uninf_ct_int = 0 # count for each image
+                  image_src = data_directory + sample['image']['pathname']
+                  #img_dir = directory + '/labels/{}'.format(mode)
+                  img_dir = directory + '/{}/{}'.format(mode, status)
+                  #print(img_dir)
+                  image = Image.open(image_src)
+                  width, height = image.size
 
-                no_of_files += 1 # count the number of images
+                  no_of_files += 1 # count the number of images
 
-                #print(image_src)
-                #print(img_dir + sample['image']['pathname'])
+                  #print(image_src)
+                  #print(img_dir + sample['image']['pathname'])
 
-                filename = sample['image']['pathname'].split('/')[-1]
+                  filename = sample['image']['pathname'].split('/')[-1]
 
-                if mode == 'training':
-                    path = '..' + sample['image']['pathname'] # todo correct pathname directory
-                    #print(sample['image']['pathname'])
-                else:
-                    path = '..' + sample['image']['pathname']
+                  path = '..' + sample['image']['pathname'] # todo correct pathname directory
+                  #print(sample['image']['pathname'])
 
-                output = "<annotation>\n\t<folder>malaria</folder>"
-                output += "\n\t<filename>{}</filename>\n\t<path>{}</path>".format(filename, path)
-                output += "\n\t<size>\n\t\t<width>{}</width>\n\t\t<height>{}</height>".format(width, height)
-                output += "\n\t\t<depth>3</depth>\n\t</size>\n\t<segmented>0</segmented>"
+                  output = "<annotation>\n\t<folder>malaria</folder>"
+                  output += "\n\t<filename>{}</filename>\n\t<path>{}</path>".format(filename, path)
+                  output += "\n\t<size>\n\t\t<width>{}</width>\n\t\t<height>{}</height>".format(width, height)
+                  output += "\n\t\t<depth>3</depth>\n\t</size>\n\t<segmented>0</segmented>"
 
-                for object in sample['objects']:
-                    category = map_frm_name(object['category'])
-                    #print(category)
-                    xmin = object['bounding_box']['minimum']['c']
-                    ymin = object['bounding_box']['minimum']['r']
-                    xmax = object['bounding_box']['maximum']['c']
-                    ymax = object['bounding_box']['maximum']['r']
+                  for object in sample['objects']:
+                      category = map_frm_name(object['category'])
+                      #print(category)
+                      xmin = object['bounding_box']['minimum']['c']
+                      ymin = object['bounding_box']['minimum']['r']
+                      xmax = object['bounding_box']['maximum']['c']
+                      ymax = object['bounding_box']['maximum']['r']
 
-                    #https://stackoverflow.com/questions/51862997/class-weights-for-balancing-data-in-tensorflow-object-detection-api
-                    if category == 'infected': 
-                      inf_ct += 1
-                      inf_ct_int += 1
-                    if category == 'uninfected':
-                      uninf_ct += 1
-                      uninf_ct_int += 1
-                    if category == 'rmv':
-                      rmv += 1
-                    if category != 'rmv':
-                        if mode == 'training':
-                            if category == status: # take out rbcs from annotation
+                      #https://stackoverflow.com/questions/51862997/class-weights-for-balancing-data-in-tensorflow-object-detection-api
+                      if category == 'infected': 
+                        inf_ct += 1
+                        inf_ct_int += 1
+                      if category == 'uninfected':
+                        uninf_ct += 1
+                        uninf_ct_int += 1
+                      if category == 'rmv':
+                        rmv += 1
+                      if category != 'rmv':
+                        if category == status: # take out rbcs from annotation
+                          output += "\n\t<object>\n\t\t<name>{}</name>\n\t\t<pose>Unspecified</pose>".format(category)
+                          output += "\n\t\t<truncated>0</truncated>\n\t\t<difficult>0</difficult>\n\t\t<bndbox>"
+                          output += "\n\t\t\t<xmin>{}</xmin>\n\t\t\t<ymin>{}</ymin>".format(xmin, ymin)
+                          output += "\n\t\t\t<xmax>{}</xmax>\n\t\t\t<ymax>{}</ymax>".format(xmax, ymax)
+                          output += "\n\t\t</bndbox>"
+                          output += "\n\t\t<weight>{}</weight>".format(wt_frm_name(category)) # to add class weights to annotation https://stackoverflow.com/questions/51862997/class-weights-for-balancing-data-in-tensorflow-object-detection-api
+                          output += "\n\t</object>"
+                          
+                  output += "\n</annotation>"
 
-                              output += "\n\t<object>\n\t\t<name>{}</name>\n\t\t<pose>Unspecified</pose>".format(category)
-                              output += "\n\t\t<truncated>0</truncated>\n\t\t<difficult>0</difficult>\n\t\t<bndbox>"
-                              output += "\n\t\t\t<xmin>{}</xmin>\n\t\t\t<ymin>{}</ymin>".format(xmin, ymin)
-                              output += "\n\t\t\t<xmax>{}</xmax>\n\t\t\t<ymax>{}</ymax>".format(xmax, ymax)
-                              output += "\n\t\t</bndbox>"
-                              output += "\n\t\t<weight>{}</weight>".format(wt_frm_name(category)) # to add class weights to annotation https://stackoverflow.com/questions/51862997/class-weights-for-balancing-data-in-tensorflow-object-detection-api
-                              output += "\n\t</object>"
-                            
-                        else:
-                            output += "\n\t<object>\n\t\t<name>{}</name>\n\t\t<pose>Unspecified</pose>".format(category)
-                            output += "\n\t\t<truncated>0</truncated>\n\t\t<difficult>0</difficult>\n\t\t<bndbox>"
-                            output += "\n\t\t\t<xmin>{}</xmin>\n\t\t\t<ymin>{}</ymin>".format(xmin, ymin)
-                            output += "\n\t\t\t<xmax>{}</xmax>\n\t\t\t<ymax>{}</ymax>".format(xmax, ymax)
-                            output += "\n\t\t</bndbox>"
-                            output += "\n\t\t<weight>{}</weight>".format(wt_frm_name(category)) # to add class weights to annotation https://stackoverflow.com/questions/51862997/class-weights-for-balancing-data-in-tensorflow-object-detection-api
-                            output += "\n\t</object>"
-
-                output += "\n</annotation>"
-
-                if mode == 'training':
-                    if inf_ct_int >> 0 or uninf_ct_int >> 0:
-                        shutil.copyfile(image_src, img_dir + '/'+ sample['image']['pathname'].split('/')[-1])
-                        with open(directory + "/{}/{}/{}.xml".format(mode, status, sample['image']['pathname'].split('/')[-1].split('.')[0]), "w") as myfile:
-                            myfile.write(output)
-                else:
+                  if inf_ct_int >> 0 or uninf_ct_int >> 0:
                     shutil.copyfile(image_src, img_dir + '/'+ sample['image']['pathname'].split('/')[-1])
-                    with open(directory + "/{}/{}.xml".format(mode, sample['image']['pathname'].split('/')[-1].split('.')[0]), "w") as myfile:
+                    with open(directory + "/{}/{}/{}.xml".format(mode, status, sample['image']['pathname'].split('/')[-1].split('.')[0]), "w") as myfile:
                         myfile.write(output)
+        else:
+          for sample in data:
+            inf_ct_int = 0
+            uninf_ct_int = 0 # count for each image
+            image_src = data_directory + sample['image']['pathname']
+            img_dir = directory + '/' + '{}'.format(mode)
+            image = Image.open(image_src)
+            width, height = image.size
+
+            no_of_files += 1 # count the number of images
+
+            #print(image_src)
+            #print(img_dir + sample['image']['pathname'])
+
+            filename = sample['image']['pathname'].split('/')[-1]
+
+            path = '..' + sample['image']['pathname']
+
+            output = "<annotation>\n\t<folder>malaria</folder>"
+            output += "\n\t<filename>{}</filename>\n\t<path>{}</path>".format(filename, path)
+            output += "\n\t<size>\n\t\t<width>{}</width>\n\t\t<height>{}</height>".format(width, height)
+            output += "\n\t\t<depth>3</depth>\n\t</size>\n\t<segmented>0</segmented>"
+
+            for object in sample['objects']:
+                category = map_frm_name(object['category'])
+                #print(category)
+                xmin = object['bounding_box']['minimum']['c']
+                ymin = object['bounding_box']['minimum']['r']
+                xmax = object['bounding_box']['maximum']['c']
+                ymax = object['bounding_box']['maximum']['r']
+
+                #https://stackoverflow.com/questions/51862997/class-weights-for-balancing-data-in-tensorflow-object-detection-api
+                if category == 'infected': 
+                  inf_ct += 1
+                if category == 'uninfected':
+                  uninf_ct += 1
+                if category == 'rmv':
+                  rmv += 1
+                if category != 'rmv':
+                  output += "\n\t<object>\n\t\t<name>{}</name>\n\t\t<pose>Unspecified</pose>".format(category)
+                  output += "\n\t\t<truncated>0</truncated>\n\t\t<difficult>0</difficult>\n\t\t<bndbox>"
+                  output += "\n\t\t\t<xmin>{}</xmin>\n\t\t\t<ymin>{}</ymin>".format(xmin, ymin)
+                  output += "\n\t\t\t<xmax>{}</xmax>\n\t\t\t<ymax>{}</ymax>".format(xmax, ymax)
+                  output += "\n\t\t</bndbox>"
+                  output += "\n\t\t<weight>{}</weight>".format(wt_frm_name(category)) # to add class weights to annotation https://stackoverflow.com/questions/51862997/class-weights-for-balancing-data-in-tensorflow-object-detection-api
+                  output += "\n\t</object>"
+
+            output += "\n</annotation>"
+
+            shutil.copyfile(image_src, img_dir + '/'+ sample['image']['pathname'].split('/')[-1])
+            with open(directory + "/{}/{}.xml".format(mode, sample['image']['pathname'].split('/')[-1].split('.')[0]), "w") as myfile:
+                myfile.write(output)
 
     print ("{} dataset created with {} files containing {} uninfected cells, {} infected cells. {} cells were removed.".format(mode, no_of_files, uninf_ct, inf_ct, rmv))
