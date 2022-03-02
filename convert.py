@@ -97,7 +97,7 @@ for mode in ['training', 'test']:
                 image_src = data_directory + sample['image']['pathname']
                 #img_dir = directory + '/labels/{}'.format(mode)
                 if mode == 'training':
-                    img_dir = directory + '/' + '{}' + '/' + '{}'.format(mode, status)
+                    img_dir = directory + '/{}/{}'.format(mode, status)
                 else:
                     img_dir = directory + '/' + '{}'.format(mode)
                 image = Image.open(image_src)
