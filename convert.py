@@ -94,6 +94,8 @@ for mode in ['training', 'test']:
         data = json.loads(myfile.read())
         for status in ['uninfected', 'infected']:
             for sample in data:
+                inf_ct_int = 0
+                uninf_ct_int = 0 # count for each image
                 image_src = data_directory + sample['image']['pathname']
                 #img_dir = directory + '/labels/{}'.format(mode)
                 if mode == 'training':
@@ -112,8 +114,8 @@ for mode in ['training', 'test']:
                 filename = sample['image']['pathname'].split('/')[-1]
 
                 if mode == 'training':
-                    path = '..' + sample['image']['pathname']
-                    print(sample['image']['pathname'])
+                    path = '..' + sample['image']['pathname'] # todo correct pathname directory
+                    #print(sample['image']['pathname'])
                 else:
                     path = '..' + sample['image']['pathname']
 
@@ -133,8 +135,10 @@ for mode in ['training', 'test']:
                     #https://stackoverflow.com/questions/51862997/class-weights-for-balancing-data-in-tensorflow-object-detection-api
                     if category == 'infected': 
                       inf_ct += 1
+                      inf_ct_int += 1
                     if category == 'uninfected':
                       uninf_ct += 1
+                      uninf_ct_int += 1
                     if category == 'rmv':
                       rmv += 1
                     if category != 'rmv' and category == status: # take out rbcs from annotation
@@ -151,9 +155,10 @@ for mode in ['training', 'test']:
                 output += "\n</annotation>"
 
                 if mode == 'training':
-                    shutil.copyfile(image_src, img_dir + '/'+ sample['image']['pathname'].split('/')[-1])
-                    with open(directory + "/{}/{}/{}.xml".format(mode, status, sample['image']['pathname'].split('/')[-1].split('.')[0]), "w") as myfile:
-                        myfile.write(output)
+                    if inf_ct_int >> 0 or if uninf_ct_int >> 0:
+                        shutil.copyfile(image_src, img_dir + '/'+ sample['image']['pathname'].split('/')[-1])
+                        with open(directory + "/{}/{}/{}.xml".format(mode, status, sample['image']['pathname'].split('/')[-1].split('.')[0]), "w") as myfile:
+                            myfile.write(output)
                 else:
                     shutil.copyfile(image_src, img_dir + '/'+ sample['image']['pathname'].split('/')[-1])
                     with open(directory + "/{}/{}.xml".format(mode, sample['image']['pathname'].split('/')[-1].split('.')[0]), "w") as myfile:
