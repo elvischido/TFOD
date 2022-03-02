@@ -98,7 +98,7 @@ for mode in ['training', 'test']:
                 #img_dir = directory + '/labels/{}'.format(mode)
                 if mode == 'training':
                     img_dir = directory + '/{}/{}'.format(mode, status)
-                    print(img_dir)
+                    #print(img_dir)
                 else:
                     img_dir = directory + '/' + '{}'.format(mode)
                 image = Image.open(image_src)
@@ -113,6 +113,7 @@ for mode in ['training', 'test']:
 
                 if mode == 'training':
                     path = '..' + status + '/' + sample['image']['pathname']
+                    print(path)
                 else:
                     path = '..' + sample['image']['pathname']
 
