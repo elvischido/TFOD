@@ -112,7 +112,7 @@ for mode in ['training', 'test']:
                 filename = sample['image']['pathname'].split('/')[-1]
 
                 if mode == 'training':
-                    path = '..' + status + '/' + sample['image']['pathname']
+                    path = '..' + sample + status + '/'['image']['pathname']
                     print(path)
                 else:
                     path = '..' + sample['image']['pathname']
