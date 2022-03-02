@@ -65,8 +65,9 @@ except OSError as error:
     print(error)
 
 try:
-    os.mkdir(directory + '/training' + '/infected/')
-    print(directory +'/training' + '/infected/' + ' has been successfully created')
+    path = os.path.join(directory, 'training', 'infected')
+    os.makedirs(path)
+    print(path + ' folder has been successfully created')
 except OSError as error:
     print(error)
 
@@ -149,7 +150,7 @@ for mode in ['training', 'test']:
 
                 if mode == 'training':
                     shutil.copyfile(image_src, img_dir + '/'+ sample['image']['pathname'].split('/')[-1])
-                    with open(directory + "/{}/{}/{}.xml".format(mode, category, sample['image']['pathname'].split('/')[-1].split('.')[0]), "w") as myfile:
+                    with open(directory + "/{}/{}/{}.xml".format(category, mode, sample['image']['pathname'].split('/')[-1].split('.')[0]), "w") as myfile:
                         myfile.write(output)
                 else:
                     shutil.copyfile(image_src, img_dir + '/'+ sample['image']['pathname'].split('/')[-1])
