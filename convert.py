@@ -155,7 +155,7 @@ for mode in ['training', 'test']:
                 output += "\n</annotation>"
 
                 if mode == 'training':
-                    if inf_ct_int >> 0 or if uninf_ct_int >> 0:
+                    if inf_ct_int >> 0 or uninf_ct_int >> 0:
                         shutil.copyfile(image_src, img_dir + '/'+ sample['image']['pathname'].split('/')[-1])
                         with open(directory + "/{}/{}/{}.xml".format(mode, status, sample['image']['pathname'].split('/')[-1].split('.')[0]), "w") as myfile:
                             myfile.write(output)
